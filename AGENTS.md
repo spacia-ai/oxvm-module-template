@@ -1,14 +1,14 @@
 # my-module: instructions for coding agents
 
-This repository is an OxideVM WebAssembly module. `module.ts` holds the whole definition: a literal `manifest` and the `adapter` that runs the WebAssembly inside a Userspace JS process.
+This repository is an OXVM WebAssembly module. `module.ts` holds the whole definition: a literal `manifest` and the `adapter` that runs the WebAssembly inside a Userspace JS process.
 
 - Edit `module.ts`, `src/` and `test/`. Never edit `dist/`; `pnpm run build` writes it.
 - Keep the manifest a literal. The build reads it without running code, so it cannot call functions or use variables.
 - Declare in `requires.host` only what the adapter uses. The adapter's `host` has exactly those members, and the type checker enforces it.
-- Import types from `@oxidevm/sdk/wasm` with `import type`; the only value import is `defineModule`. The adapter ships as one self-contained file.
+- Import types from `@oxvm/sdk/wasm` with `import type`; the only value import is `defineModule`. The adapter ships as one self-contained file.
 - No `any`, no `@ts-ignore`, no non-null assertions. Treat everything from outside (arguments, bytes, WebAssembly exports) as `unknown` and check it.
 - Artifacts are files in this repository named by `from`. Pin upstream binaries by hash where they come from, and keep their licenses and notices in this repository.
-- Verify with `pnpm run check` (types, lint, and `oxidevm wasm build --check`), then `pnpm test`, then `pnpm run test:conformance` (`oxidevm wasm test` in a real browser).
+- Verify with `pnpm run check` (types, lint, and `oxvm wasm build --check`), then `pnpm test`, then `pnpm run test:conformance` (`oxvm wasm test` in a real browser).
 - Release by tag: `pnpm run release` prints the steps.
 
 ## Commands that programs in the VM run
@@ -27,7 +27,7 @@ Each name in `commands` becomes a program: once an application turns it on for a
 
 ## Networking rules
 
-The module networking standard (OxideVM engine ADR 0029; the SDK's `docs/wasm-modules.md`, "Networking"):
+The module networking standard (OXVM engine ADR 0029; the SDK's `docs/wasm-modules.md`, "Networking"):
 
 1. Declare one reach in `requires.host`: none, `net.vm` or `net.internet`. Rust enforces it for every process of the module.
 2. With `net.internet`, disclose default hosts and the purpose in `network`; it is shown at install and never an allowlist.
@@ -37,5 +37,5 @@ The module networking standard (OxideVM engine ADR 0029; the SDK's `docs/wasm-mo
 6. Every request carries `host.signal` (or a signal derived from it) and a timeout; read bodies as streams or bounded.
 7. TLS always verifies against the VM's `/etc/ssl/cert.pem`. Credentials come only from options or guest files.
 8. Internet means TCP 80 and 443 plus DNS; nothing connects in. Programs started with `process.spawn` follow the VM's own policy.
-9. Test with `testHost` from `@oxidevm/sdk/wasm/testing` (local-only by default); `oxidevm wasm test` checks `network-direct`, `network-declared` and `network-offline`.
+9. Test with `testHost` from `@oxvm/sdk/wasm/testing` (local-only by default); `oxvm wasm test` checks `network-direct`, `network-declared` and `network-offline`.
 10. Keep the README's "Network" section true: reach, disclosed hosts, purpose, and behaviour offline.
