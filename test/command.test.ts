@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
-import { testHost, type TestHostInputs } from "@oxidevm/sdk/wasm/testing";
+import { testHost, type TestHostInputs } from "@oxvm/sdk/wasm/testing";
 import definition from "../module.ts";
 
 type Invocation = NonNullable<TestHostInputs["invocation"]>;

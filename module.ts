@@ -1,4 +1,4 @@
-import { defineModule } from "@oxidevm/sdk/wasm";
+import { defineModule } from "@oxvm/sdk/wasm";
 import { addCommand } from "./src/command.ts";
 
 export default defineModule({

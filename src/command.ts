@@ -1,4 +1,4 @@
-import type { BaseHost, CommandHooks, Host } from "@oxidevm/sdk/wasm";
+import type { BaseHost, CommandHooks, Host } from "@oxvm/sdk/wasm";
 import { parseOperands } from "./operands.ts";
 
 /**
