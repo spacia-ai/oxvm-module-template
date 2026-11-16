@@ -1,6 +1,6 @@
 my-module
 Copyright (c) <year> <copyright holder>
 
-An OxideVM WebAssembly module. Replace this file with the copyright and attribution notices of this module and of every program
+An OxVM WebAssembly module. Replace this file with the copyright and attribution notices of this module and of every program
 or library whose code or binaries it ships; the Apache License asks a redistributor to keep the NOTICE files of the works it
 redistributes. Keep the license texts of shipped binaries in this repository too, and name the files in license.notices.

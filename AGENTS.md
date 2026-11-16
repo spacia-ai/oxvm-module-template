@@ -1,6 +1,6 @@
 # my-module: instructions for coding agents
 
-This repository is an OXVM WebAssembly module. `module.ts` holds the whole definition: a literal `manifest` and the `adapter` that runs the WebAssembly inside a Userspace JS process.
+This repository is an OxVM WebAssembly module. `module.ts` holds the whole definition: a literal `manifest` and the `adapter` that runs the WebAssembly inside a Userspace JS process.
 
 - Edit `module.ts`, `src/` and `test/`. Never edit `dist/`; `pnpm run build` writes it.
 - Keep the manifest a literal. The build reads it without running code, so it cannot call functions or use variables.
@@ -27,7 +27,7 @@ Each name in `commands` becomes a program: once an application turns it on for a
 
 ## Networking rules
 
-The module networking standard (OXVM engine ADR 0029; the SDK's `docs/wasm-modules.md`, "Networking"):
+The module networking standard (OxVM engine ADR 0029; the SDK's `docs/wasm-modules.md`, "Networking"):
 
 1. Declare one reach in `requires.host`: none, `net.vm` or `net.internet`. Rust enforces it for every process of the module.
 2. With `net.internet`, disclose default hosts and the purpose in `network`; it is shown at install and never an allowlist.

@@ -1,10 +1,10 @@
 # my-module
 
-An [OXVM](https://oxvm.dev) WebAssembly module (command). A command module runs once per start, like a program: `spawnModule(vm, handle, { args: ["2", "3"] })`.
+An [OxVM](https://oxvm.dev) WebAssembly module (command). A command module runs once per start, like a program: `spawnModule(vm, handle, { args: ["2", "3"] })`.
 
 ## Use it
 
-In an OXVM application:
+In an OxVM application:
 
 ```sh
 oxvm wasm add github:OWNER/REPO@v0.1.0
